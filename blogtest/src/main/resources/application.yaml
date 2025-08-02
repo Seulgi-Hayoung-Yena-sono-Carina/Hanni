@@ -21,8 +21,22 @@ spring:
         format_sql: true
         show_sql: true
     database-platform: org.hibernate.dialect.H2Dialect
-
+  config:
+    import: optional:file:.env[.properties]
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+            scope:
+              - email
+              - profile
   sql:
     init:
       mode: always
       encoding: UTF-8
+jwt:
+  issuer: dja3065@naver.com
+  secret_key: study-springboot
